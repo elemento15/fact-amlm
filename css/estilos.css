@@ -1,0 +1,64 @@
+body {
+	background-color: #EEEEEE;
+}
+
+h3.titulo {
+	padding-bottom: 10px;
+	border-bottom: 2px solid #000000;
+}
+
+.form-seccion {
+	display: none;
+}
+
+.cls-toolbar {
+	padding: 15px 0px 15px 10px;
+	background-color: #DDDDDD;
+	margin-top: 20px;
+	border: 1px solid #CCCCCC;
+}
+
+.cls-form {
+	padding: 15px;
+	margin: 5px 0px 10px 0px;
+}
+
+.dataTable tbody tr.selected {
+	background-color: #faf7d8 !important;
+}
+
+
+/* Para controles de busqueda de los grid */
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+
+
+/* 
+	Oculto el search por default de dataTables 
+	Estoy usando mi propio campo de busqueda 
+*/
+.dataTables_filter {
+	display: none; 
+}
+
+
+.cls-orderable {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.clsMsgBlock {
+	font-size: 24px;
+	font-weight: bold;
+	color: #666666;
+}
+
+tr.clsCancelado {
+	color: #FF0000;
+}

@@ -1,0 +1,100 @@
+﻿<!-- Grid -->
+<div class="grid-seccion">
+  <h3 class="titulo">Catálogo de Clientes</h3>
+
+  <div class="form-inline pull-right">
+    <div class="input-group stylish-input-group">
+      <input type="text" class="form-control textoBuscar" placeholder="Buscar" >
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-search"></span>
+      </span>
+    </div>
+  </div>
+  
+  <table id="gridClientes" class="table table-striped table-hover table-condensed">
+    <thead>
+      <th>
+        <div class="cls-orderable" nameColumn="rfc">
+          <span>RFC</span>
+        </div>
+      </th>
+      <th>
+        <div class="cls-orderable" nameColumn="nombre">
+          <span>Razon Social</span>
+        </div>
+      </th>
+      <th>
+        <div class="cls-orderable" nameColumn="comercial">
+          <span>Nombre Comercial</span>
+        </div>
+      </th>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  
+  <div class="cls-toolbar">
+    <button class="btn btn-primary botonNuevo">Nuevo</button>
+    <button class="btn btn-primary botonEditar">Editar</button>
+    <button class="btn btn-danger  botonEliminar">Eliminar</button>
+  </div>
+</div>
+
+<!-- Formulario -->
+<div class="form-seccion">
+  <h3 class="titulo">Captura de Clientes</h3>
+  <form id="formClientes">
+    <div class="cls-form row">
+      <div class="col-sm-6">
+        <input type="hidden" name="id" />
+        <div class="form-group">
+          <label for="txt-rfc">RFC:</label>
+          <input type="text" class="form-control" name="rfc" maxlength="13" />
+        </div>
+        <div class="form-group">
+          <label for="txt-nombre">Razon Social:</label>
+          <input type="text" class="form-control" name="nombre" />
+        </div>
+        <div class="form-group">
+          <label for="txt-comercial">Nombre Comercial:</label>
+          <input type="text" class="form-control" name="comercial" />
+        </div>
+        <div class="form-group">
+          <label for="txt-calle">Calle:</label>
+          <input type="text" class="form-control" name="calle" />
+        </div>
+        <div class="form-group">
+          <label for="txt-numero">Numero:</label>
+          <input type="text" class="form-control" name="numero" />
+        </div>
+        <div class="form-group">
+          <label for="txt-colonia">Colonia:</label>
+          <input type="text" class="form-control" name="colonia" />
+        </div>
+        <div class="form-group">
+          <label for="txt-cp">Codigo Postal:</label>
+          <input type="text" class="form-control" name="cp" maxlength="5" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="txt-telefono">Telefono:</label>
+          <input type="text" class="form-control" name="telefono" maxlength="20" />
+        </div>
+        <div class="form-group">
+          <label for="txt-celular">Celular:</label>
+          <input type="text" class="form-control" name="celular" maxlength="20" />
+        </div>
+        <div class="form-group">
+          <label for="txt-email">Email:</label>
+          <input type="text" class="form-control" name="email" />
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <div class="cls-toolbar">
+    <button class="btn btn-primary botonGuardar">Guardar</button>
+    <button class="btn btn-default botonCerrar">Cerrar</button>
+  </div>
+</div>
