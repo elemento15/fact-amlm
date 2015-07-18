@@ -4,6 +4,8 @@ $(document).ready(function () {
     switch (modulo) {
       case 'clientesModulo' : clientesModulo.init();
                               break;
+      case 'facturasModulo' : facturasModulo.init();
+                              break;
     }
   }
 

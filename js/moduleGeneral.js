@@ -121,7 +121,7 @@ var moduleGeneral = function (opts) {
   },
   this.save = function (rec) {
     var me = this;
-    this.record = rec;
+    this.dataForm = rec;
 
     if (opts.beforeSave && !opts.beforeSave.call(me)) return;
 
