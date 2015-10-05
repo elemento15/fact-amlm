@@ -25,8 +25,22 @@ CREATE TABLE `facturas` (
   `iva` DECIMAL(18,6) NOT NULL DEFAULT 0,
   `total` DECIMAL(18,6) NOT NULL DEFAULT 0,
   `activo` TINYINT NOT NULL DEFAULT 1 COMMENT 'Indica si la factura esta activa o cancelada (1 = Activa, 0 = Cancelada)',
+  `serie` VARCHAR(10) NULL,
+  `folio` VARCHAR(20) NULL,
+  `sello_cfd` TEXT NULL,
+  `certificado_sat` VARCHAR(250) NULL,
+  `sello_sat` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `ak_factura_cliente` (`cliente_id` ASC),
   INDEX `ak_factura_fecha` (`fecha` ASC),
   CONSTRAINT `fk_factura_cliente` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
+
+
+CREATE TABLE `configuracion` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(150) NOT NULL,
+  `rfc` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+

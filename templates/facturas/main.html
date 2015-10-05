@@ -6,7 +6,7 @@
     <div class="input-group stylish-input-group">
       <input type="text" class="form-control textoBuscar" placeholder="Buscar" >
       <span class="input-group-addon">
-        <span class="glyphicon glyphicon-search"></span>
+        <span title="Limpiar Busqueda" class="glyphicon glyphicon-search clear-search"></span>
       </span>
     </div>
   </div>
@@ -42,7 +42,32 @@
     <button class="btn btn-primary botonNuevo">Nuevo</button>
     <button class="btn btn-primary botonEditar">Editar</button>
     <button class="btn btn-danger  botonEliminar">Eliminar</button>
+    <button class="btn btn-default botonCargar" data-toggle="modal" data-target="#modal-cargar-factura">Cargar</button>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-cargar-factura" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Cargar Factura (XML)</h4>
+        </div>
+        <div class="modal-body">
+
+          <input type="file" id="uploaderXML" name="uploaderXML" />
+          <button id="cargarXML" style="margin-top:10px;">Cargar</button>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- Formulario -->

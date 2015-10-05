@@ -186,6 +186,12 @@ var moduleGeneral = function (opts) {
       }
     });
 
+    // limpiar la busqueda
+    $('span.clear-search').on('click', function (evt) {
+      $(this).parent().parent().find('input.textoBuscar').val('').focus();
+      me.grid.search('').draw();
+    });
+
     // icons for ordering column headers
     $('#'+ opts.gridId +' th').on('click', '.cls-orderable', function (evt) {
       var jqObj = $(this).find('span.glyphicon');

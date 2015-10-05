@@ -63,3 +63,7 @@ h3.titulo {
 tr.clsCancelado {
 	color: #FF0000;
 }
+
+span.clear-search {
+	cursor: pointer;
+}
