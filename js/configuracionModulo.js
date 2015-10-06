@@ -26,6 +26,10 @@ var configuracionModulo = function () {
 					notify(response.msg, 'E');
 				}
 				unblock();
+			},
+			error: function (resp) {
+				notify(resp.responseJSON.msg, 'E');
+				unblock();
 			}
 		});
 	},

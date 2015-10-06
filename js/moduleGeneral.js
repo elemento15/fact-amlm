@@ -86,6 +86,11 @@ var moduleGeneral = function (opts) {
           notify(response.msg, 'E');
         }
         unblock();
+      },
+      error: function (response) {
+        var resp = JSON.parse(response.responseText);
+        unblock();
+        notify(resp.msg, 'E');
       }
     });
   },
