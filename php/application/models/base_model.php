@@ -182,7 +182,7 @@ class BaseModel extends CI_Model {
 
         $table1 = $this->table_name;
         $table2 = $join['table'];
-        $type   = ( $join['type'] ) ? $join['type'] : 'left';
+        $type   = ( isset($join['type']) ) ? $join['type'] : 'left';
         $fk     = $join['fk'];
 
         $this->db->join($table2, "$table2.id = $table1.$fk", $type);

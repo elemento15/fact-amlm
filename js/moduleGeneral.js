@@ -1,5 +1,6 @@
 var moduleGeneral = function (opts) {
   this.order = opts.order;
+  this.filter = opts.filter || [];
 
   this.init = function () {
     var me = this;
@@ -11,7 +12,8 @@ var moduleGeneral = function (opts) {
         url: opts.url.read,
         type: 'POST',
         data: {
-          sort: me.order
+          sort: me.order,
+          filter: me.filter
         },
         error: function (resp) {
           notify(resp.responseJSON.msg, 'E');
@@ -20,11 +22,13 @@ var moduleGeneral = function (opts) {
       },
       createdRow: opts.addingRow,
       columns: opts.columns,
+      columnDefs: opts.columnDefs || [],
       processing: false,
       lengthChange: false,
       pageLength: opts.pageLen || 10,
       searching: true,
       ordering: false,
+      filtering: false,
       language: {
         processing: 'Procesando...',
         info: '_START_ al _END_ de _TOTAL_ registros',
@@ -42,7 +46,8 @@ var moduleGeneral = function (opts) {
 
     this.grid.on('preXhr.dt', function ( e, settings, data ) {
         block();
-        data.sort = me.order
+        data.sort = me.order;
+        data.filter = me.filter;
     });
 
     this.grid.on('xhr.dt', function () {

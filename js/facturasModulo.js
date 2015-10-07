@@ -10,9 +10,31 @@ var facturasModulo = new moduleGeneral ({
   },
   columns: [
     { data: 'fecha' },
-    { data: 'rfc' },
-    { data: 'cliente' },
-    { data: 'total' }
+    { data: 'rfc'   },
+    { data: 'total' },
+    { data: 'tipo'  }
+  ],
+  columnDefs: [
+    {
+      "render": function (data, type, row) {
+        return data.substr(0, 10);
+      }, "targets": 0
+    },{
+      "render": function (data, type, row) {
+        var html = '<div class="cls-rfc-cliente">'+ data +'</div>';
+        html    += '<div class="cls-nombre-cliente">'+ row.nombre_cliente +'</div>';
+        return html;
+      }, "targets": 1
+    },{
+      "render": function (data, type, row) {
+        return '<div class="pull-right">$'+ formatNumber(parseFloat(data).toFixed(2)) +'</div>';
+      }, "targets": 2
+    },{
+      "render": function (data, type, row) {
+        return (data == 'E') ? 'Emitida' : 'Recibida';
+      }, "targets": 3
+    }
+
   ],
   order: {
     column: 'fecha',
@@ -56,6 +78,16 @@ var facturasModulo = new moduleGeneral ({
           notify(resp.msg, 'E');
         }
       });
+    });
+
+    $("#filtroTipoFactura").change(function (evt) {
+      var tipo = $(this).val();
+      me.filter = [];
+      if (tipo) {
+        me.filter.push({ field: 'tipo', value: tipo });
+      }
+
+      me.refresh();
     });
 
   }

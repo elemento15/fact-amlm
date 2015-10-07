@@ -36,6 +36,14 @@ var configuracionModulo = function () {
 	this.save = function (rec) {
 		var me = this;
 		
+		// validar formato de rfc
+		var regexrfc1 = /^[A-Z]{4}\d{6}[a-zA-Z0-9]{3}$/;
+		var regexrfc2 = /^[A-Z]{3}\d{6}[a-zA-Z0-9]{3}$/;
+		if(!regexrfc1.test(rec.rfc) && !regexrfc2.test(rec.rfc)) {
+			notify('El RFC es invalido', 'W');
+			return false;
+		}
+
 		block();
 		$.ajax({
 			url:  'app.php/configuraciones/save',

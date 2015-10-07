@@ -1,6 +1,24 @@
+<style type="text/css">
+  .cls-rfc-cliente {
+    font-weight: bold;
+  }
+  .cls-nombre-cliente {
+    font-size: 12px;
+  }
+</style>
+
 <!-- Grid -->
 <div class="grid-seccion">
   <h3 class="titulo">Catálogo de Facturas</h3>
+
+  <div class="form-inline pull-left">
+    <label>Tipo de Facturas: </label>
+    <select class="form-control" id="filtroTipoFactura">
+      <option value="">-- Todas --</option>
+      <option value="R">Recibidas</option>
+      <option value="E">Emitidas</option>
+    </select>
+  </div>
 
   <div class="form-inline pull-right">
     <div class="input-group stylish-input-group">
@@ -24,13 +42,13 @@
         </div>
       </th>
       <th>
-        <div class="cls-orderable" nameColumn="nombre">
-          <span>Cliente</span>
+        <div class="" nameColumn="total">
+          <span>Total</span>
         </div>
       </th>
       <th>
-        <div class="" nameColumn="total">
-          <span>Total</span>
+        <div class="" nameColumn="tipo">
+          <span>Tipo</span>
         </div>
       </th>
     </thead>
@@ -39,8 +57,8 @@
   </table>
   
   <div class="cls-toolbar">
-    <button class="btn btn-primary botonNuevo">Nuevo</button>
-    <button class="btn btn-primary botonEditar">Editar</button>
+    <!--<button class="btn btn-primary botonNuevo">Nuevo</button>-->
+    <button class="btn btn-primary botonEditar">Visualizar</button>
     <button class="btn btn-danger  botonEliminar">Eliminar</button>
     <button class="btn btn-default botonCargar" data-toggle="modal" data-target="#modal-cargar-factura">Cargar</button>
   </div>

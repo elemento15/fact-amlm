@@ -7,12 +7,16 @@ require_once('cliente.php');
 class Factura extends BaseModel {
 	
 	protected $table_name    = 'facturas';
-	protected $list_fields   = array('id','tipo','cliente_id','rfc','fecha','total','activo');
-	protected $search_fields = array('rfc');
+	protected $list_fields   = array('id','tipo','cliente_id','rfc','fecha','total','activo','clientes.nombre AS nombre_cliente');
+	protected $search_fields = array('rfc','clientes.nombre');
 	protected $save_fields   = array('tipo','cliente_id','rfc','fecha','subtotal','iva','total','activo');
 	// protected $edit_fields   = array('tipo','cliente_id','rfc','fecha','subtotal','iva','total','activo');
 	protected $new_defaults  = array('tipo' => 'R', 'activo' => 1);
 	protected $avoid_delete  = false;
+
+	protected $join_tables = array(
+		                         array('table' => 'clientes', 'fk' => 'cliente_id')
+		                     );
 
 
 	public function loadXML($xml) {
