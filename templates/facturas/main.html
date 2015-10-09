@@ -2,7 +2,7 @@
   .cls-rfc-cliente {
     font-weight: bold;
   }
-  .cls-nombre-cliente {
+  .cls-texto-secundario {
     font-size: 12px;
   }
 </style>
@@ -37,13 +37,18 @@
         </div>
       </th>
       <th>
-        <div class="cls-orderable" nameColumn="rfc">
-          <span>RFC</span>
+        <div class="" nameColumn="folio">
+          <span>Serie/Folio</span>
         </div>
       </th>
       <th>
+        <div class="cls-orderable" nameColumn="rfc">
+          <span>Cliente</span>
+        </div>
+      </th>
+      <th style="text-align:center">
         <div class="" nameColumn="total">
-          <span>Total</span>
+          <span>Total </span>
         </div>
       </th>
       <th>
@@ -58,12 +63,13 @@
   
   <div class="cls-toolbar">
     <!--<button class="btn btn-primary botonNuevo">Nuevo</button>-->
-    <button class="btn btn-primary botonEditar">Visualizar</button>
+    <!--<button class="btn btn-primary botonEditar">Visualizar</button>-->
+    <button class="btn btn-primary botonReporte" data-toggle="modal" data-target="#modal-config-pdf">Reporte</button>
     <button class="btn btn-danger  botonEliminar">Eliminar</button>
     <button class="btn btn-default botonCargar" data-toggle="modal" data-target="#modal-cargar-factura">Cargar</button>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal for Upload XML -->
   <div class="modal fade" id="modal-cargar-factura" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -74,12 +80,32 @@
           <h4 class="modal-title" id="myModalLabel">Cargar Factura (XML)</h4>
         </div>
         <div class="modal-body">
-
           <input type="file" id="uploaderXML" name="uploaderXML" />
           <button id="cargarXML" style="margin-top:10px;">Cargar</button>
-
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for PDF Reports -->
+  <div class="modal fade" id="modal-config-pdf" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Generar Reporte (PDF)</h4>
+        </div>
+        <div class="modal-body">
+          <!--<input type="file" id="uploaderXML" name="uploaderXML" />
+          <button id="cargarXML" style="margin-top:10px;">Cargar</button>-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btnPDF">Generar</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>

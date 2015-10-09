@@ -10,6 +10,7 @@ var facturasModulo = new moduleGeneral ({
   },
   columns: [
     { data: 'fecha' },
+    { data: 'folio' },
     { data: 'rfc'   },
     { data: 'total' },
     { data: 'tipo'  }
@@ -21,25 +22,31 @@ var facturasModulo = new moduleGeneral ({
       }, "targets": 0
     },{
       "render": function (data, type, row) {
-        var html = '<div class="cls-rfc-cliente">'+ data +'</div>';
-        html    += '<div class="cls-nombre-cliente">'+ row.nombre_cliente +'</div>';
+        var html = '<div class="cls-texto-secundario">'+ (row.serie || '') +' '+ (row.folio || '') +'</div>';
         return html;
       }, "targets": 1
     },{
       "render": function (data, type, row) {
-        return '<div class="pull-right">$'+ formatNumber(parseFloat(data).toFixed(2)) +'</div>';
+        var html = '<div class="cls-rfc-cliente">'+ data +'</div>';
+        html    += '<div class="cls-texto-secundario">'+ row.nombre_cliente +'</div>';
+        return html;
       }, "targets": 2
     },{
       "render": function (data, type, row) {
-        return (data == 'E') ? 'Emitida' : 'Recibida';
+        console.log(data)
+        return '<div class="pull-right">$'+ formatNumber(parseFloat(data).toFixed(2)) +'</div>';
       }, "targets": 3
+    },{
+      "render": function (data, type, row) {
+        return (data == 'E') ? 'Emitida' : 'Recibida';
+      }, "targets": 4
     }
-
   ],
   order: {
     column: 'fecha',
     direction: 'ASC'
   },
+  disableEditOnDblClick: true,
   // addingRow: function (row, data, index) {
   //   if (!parseInt(data.activo)) {
   //     $(row).addClass('clsCancelado');
@@ -89,6 +96,5 @@ var facturasModulo = new moduleGeneral ({
 
       me.refresh();
     });
-
   }
 });

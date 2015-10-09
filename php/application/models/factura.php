@@ -7,8 +7,8 @@ require_once('cliente.php');
 class Factura extends BaseModel {
 	
 	protected $table_name    = 'facturas';
-	protected $list_fields   = array('id','tipo','cliente_id','rfc','fecha','total','activo','clientes.nombre AS nombre_cliente');
-	protected $search_fields = array('rfc','clientes.nombre');
+	protected $list_fields   = array('id','tipo','cliente_id','rfc','fecha','total','activo','clientes.nombre AS nombre_cliente','serie','folio');
+	protected $search_fields = array('rfc','clientes.nombre','serie','folio');
 	protected $save_fields   = array('tipo','cliente_id','rfc','fecha','subtotal','iva','total','activo');
 	// protected $edit_fields   = array('tipo','cliente_id','rfc','fecha','subtotal','iva','total','activo');
 	protected $new_defaults  = array('tipo' => 'R', 'activo' => 1);
@@ -85,6 +85,8 @@ class Factura extends BaseModel {
 
 		// read more data from XML
 		foreach ($xml->xpath('//cfdi:Comprobante') as $item) {
+			$serie    = (string)$item['serie'];
+			$folio    = (string)$item['folio'];
 			$fecha    = (string)$item['fecha'];
 			$subtotal = (float)$item['subTotal'];
 			$total    = (float)$item['total'];
@@ -120,7 +122,9 @@ class Factura extends BaseModel {
 			'subtotal'   => $subtotal,
 			'iva'        => $impuestos_trasladados,
 			'total'      => $total,
-			'activo'     => 1
+			'activo'     => 1,
+			'serie'      => $serie,
+			'folio'      => $folio
 		);
 
 		if (!$this->save($data, true)) {

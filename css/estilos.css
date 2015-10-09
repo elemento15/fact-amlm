@@ -52,6 +52,7 @@ h3.titulo {
 .cls-orderable {
 	display: inline-block;
 	cursor: pointer;
+	color: #3572b0;
 }
 
 .clsMsgBlock {

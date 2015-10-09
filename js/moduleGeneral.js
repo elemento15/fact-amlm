@@ -1,6 +1,7 @@
 var moduleGeneral = function (opts) {
   this.order = opts.order;
   this.filter = opts.filter || [];
+  this.disableEditOnDblClick = opts.disableEditOnDblClick || false;
 
   this.init = function () {
     var me = this;
@@ -185,7 +186,9 @@ var moduleGeneral = function (opts) {
       $('#'+ opts.gridId +' tbody tr').removeClass('selected');
       $(this).addClass('selected');
       var record = me.getSelectedRecord();
-      me.edit(record);
+      if (!me.disableEditOnDblClick) {
+        me.edit(record);
+      }
     });
 
     // searching when enter in textbox
