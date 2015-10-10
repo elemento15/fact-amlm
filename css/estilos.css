@@ -68,3 +68,8 @@ tr.clsCancelado {
 span.clear-search {
 	cursor: pointer;
 }
+
+.cls-datepicker-container,
+.cls-datepicker-input {
+	width: 155px;
+}

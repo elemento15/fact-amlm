@@ -33,7 +33,6 @@ var facturasModulo = new moduleGeneral ({
       }, "targets": 2
     },{
       "render": function (data, type, row) {
-        console.log(data)
         return '<div class="pull-right">$'+ formatNumber(parseFloat(data).toFixed(2)) +'</div>';
       }, "targets": 3
     },{
