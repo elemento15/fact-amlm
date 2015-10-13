@@ -4,7 +4,6 @@
   <form id="formReportes">
     <div class="cls-form row">
       <div class="col-sm-6">
-        
         <div class="form-group">
           <label for="">Fecha Inicial:</label>
           <div class="input-group cls-datepicker-container" id="dateFecIni">
@@ -24,14 +23,25 @@
             </span>
           </div>
         </div>
-        
       </div>
+
       <div class="col-sm-6">
+        <div class="form-group">
+          <label for="">Tipo:</label>
+          <div class="input-group">
+            <select name="tipo_factura" class="form-control">
+              <option value="">-- Todas --</option>
+              <option value="R">Recibidas</option>
+              <option value="E">Emitidas</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
   </form>
   
   <div class="cls-toolbar">
-    <button class="btn btn-primary botonGenerar">Generar</button>
+    <button class="btn btn-primary btnConcentrado">Concentrado</button>
+    <button class="btn btn-primary btnDetallado">Detallado</button>
   </div>
 </div>
