@@ -35,9 +35,6 @@ var reportesModulo = function () {
 		var fec_ini = moment($('#dateFecIni').data('date'), 'DD/MMM/YYYY').format('YYYY-MM-DD');
 		var fec_fin = moment($('#dateFecFin').data('date'), 'DD/MMM/YYYY').format('YYYY-MM-DD');
 		var type = $('[name="tipo_factura"]').val();
-		
-		console.log(fec_ini);
-		console.log(fec_fin);
 
 		if (fec_ini == 'Invalid date') {
 			notify('Fecha inicial invalida', 'W');

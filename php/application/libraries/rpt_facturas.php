@@ -101,6 +101,7 @@ class Rpt_Facturas extends TCPDF {
 		}
 
 		$this->Ln(10);
+		$border = false;
 		$this->SetFont('helvetica', 'B', 10);
 
 		$this->Cell(38, 0, 'Facturas Emitidas: ', $border, 0);
@@ -196,6 +197,7 @@ class Rpt_Facturas extends TCPDF {
 		}
 
 		$this->Ln(10);
+		$border = false;
 		$this->SetFont('helvetica', 'B', 10);
 
 		$this->Cell(38, 0, 'Facturas Emitidas: ', $border, 0);
