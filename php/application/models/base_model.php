@@ -3,9 +3,11 @@
 class BaseModel extends CI_Model {
 
   private $error;
+  protected $pdo;
 
   public function __construct() {
     parent::__construct();
+    // $this->load->database();
   }
 
   public function findAll($params) {
