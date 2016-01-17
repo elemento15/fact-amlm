@@ -1,3 +1,3 @@
 /php/application/config
-/php/application/config/config.php
-/php/application/config/database.php
+/php_ci/application/config/config.php
+/php_ci/application/config/database.php
