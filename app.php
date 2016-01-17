@@ -56,7 +56,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = 'php/system';
+	$system_path = 'php_ci/system';
 
 /*
  *---------------------------------------------------------------
@@ -72,7 +72,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'php/application';
+	$application_folder = 'php_ci/application';
 
 /*
  * --------------------------------------------------------------------
