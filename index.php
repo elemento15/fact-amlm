@@ -1,3 +1,11 @@
+<?php
+  session_start();
+
+  if(empty($_SESSION['username'])) {
+    header('Location: login.html');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,6 +57,7 @@
             <li class="opt-navbar" tpl="facturas/main" modulo="facturasModulo"><a href="#">Facturas</a></li>
             <li class="opt-navbar" tpl="facturas/reportes" modulo="reportesModulo"><a href="#">Reportes</a></li>
             <li class="opt-navbar" tpl="configuracion/main" modulo="configuracionModulo"><a href="#">Configuración</a></li>
+            <li class="opt-navbar" opt="close-session"><a href="#">Cerrar</a></li>
           </ul>
         </div>
       </div>

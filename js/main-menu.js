@@ -15,9 +15,31 @@ $(document).ready(function () {
     }
   }
 
+  function closeSession() {
+    if (confirm('Cerrar Sesion')) {
+      $.ajax({
+        url: 'app.php/acceso/logout',
+        type: 'POST',
+        dataType: 'JSON',
+        success: function (response) {
+          window.location.reload();
+        },
+        error: function () {
+          alert('Error en el servidor al cerrar sesión');
+        }
+      });
+    }
+  }
+
   $('#navbar li.opt-navbar').click(function (evt) {
     var tpl = $(this).attr('tpl');
     var modulo = $(this).attr('modulo');
+
+    if ($(this).attr('opt') == 'close-session') {
+      closeSession();
+      return false;
+    }
+
     // si es la opcion activa, omite
     if ($(this).hasClass('active')) {
       return false;
