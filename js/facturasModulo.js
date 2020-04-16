@@ -64,9 +64,12 @@ var facturasModulo = new moduleGeneral ({
     var me = this;
 
     $("#cargarXML").on("click", function() {
-      var file_data = $("#uploaderXML").prop("files")[0];
+      var files = $("#uploaderXML").prop("files");
       var form_data = new FormData();
-      form_data.append("file", file_data);
+
+      for (var i = 0; i < files.length; i++) {
+        form_data.append("files[]", document.getElementById('uploaderXML').files[i]);
+      }
 
       block('Cargando XML');
       $.ajax({
@@ -82,6 +85,15 @@ var facturasModulo = new moduleGeneral ({
           unblock();
           if (resp.success) {
             notify(resp.msg, 'S');
+            document.getElementById('uploaderXML').value = "";
+
+            if (resp.files.success) {
+              notify('Archivos cargados: '+ resp.files.success, 'S');
+            }
+
+            if (resp.files.fail) {
+              notify('Archivos fallidos: '+ resp.files.fail, 'E');
+            }
           } else {
             notify(resp.msg, 'E');
           }
