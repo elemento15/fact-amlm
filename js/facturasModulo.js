@@ -43,7 +43,7 @@ var facturasModulo = new moduleGeneral ({
     },{
       "render": function (data, type, row) {
         if (data) {
-          return data.substr(0, 10);
+          return data;
         } else {
           return '';
         }

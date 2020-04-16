@@ -4,3 +4,12 @@ ALTER TABLE `facturas`
 
 ALTER TABLE `facturas`
 	ADD COLUMN `creado` DATE NULL AFTER `sello_sat`;
+
+
+-- 2020-04-16
+ALTER TABLE `facturas` 
+	CHANGE COLUMN `serie` `serie` VARCHAR(15) NULL DEFAULT NULL ,
+	CHANGE COLUMN `folio` `folio` VARCHAR(50) NULL DEFAULT NULL ;
+
+ALTER TABLE `facturas`
+	CHANGE COLUMN `creado` `creado` DATETIME NULL;

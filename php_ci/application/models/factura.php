@@ -106,7 +106,7 @@ class Factura extends BaseModel {
 			'activo'     => 1,
 			'serie'      => $xmlData['serie'],
 			'folio'      => $xmlData['folio'],
-			'creado'     => date('Y-m-d'),
+			'creado'     => date('Y-m-d H:i:s'),
 
 			'sello_cfd'       => $xmlData['sello_cfd'],
 			'certificado_sat' => $xmlData['certificado_sat'],
