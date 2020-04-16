@@ -9,11 +9,12 @@ var facturasModulo = new moduleGeneral ({
     remove: 'app.php/facturas/remove'
   },
   columns: [
-    { data: 'fecha' },
-    { data: 'folio' },
-    { data: 'rfc'   },
-    { data: 'total' },
-    { data: 'tipo'  }
+    { data: 'fecha'  },
+    { data: 'folio'  },
+    { data: 'rfc'    },
+    { data: 'total'  },
+    { data: 'tipo'   },
+    { data: 'creado' }
   ],
   columnDefs: [
     {
@@ -39,11 +40,19 @@ var facturasModulo = new moduleGeneral ({
       "render": function (data, type, row) {
         return (data == 'E') ? 'Emitida' : 'Recibida';
       }, "targets": 4
+    },{
+      "render": function (data, type, row) {
+        if (data) {
+          return data.substr(0, 10);
+        } else {
+          return '';
+        }
+      }, "targets": 5
     }
   ],
   order: {
     column: 'fecha',
-    direction: 'ASC'
+    direction: 'DESC'
   },
   disableEditOnDblClick: true,
   // addingRow: function (row, data, index) {

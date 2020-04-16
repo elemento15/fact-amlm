@@ -7,9 +7,11 @@ require_once('cliente.php');
 class Factura extends BaseModel {
 	
 	protected $table_name    = 'facturas';
-	protected $list_fields   = array('id','tipo','cliente_id','rfc','fecha','total','activo','clientes.nombre AS nombre_cliente','serie','folio');
-	protected $search_fields = array('rfc','clientes.nombre','serie','folio');
-	protected $save_fields   = array('tipo','cliente_id','rfc','fecha','subtotal','iva','total','activo');
+	protected $list_fields   = array('id','tipo','cliente_id','rfc','fecha','total','activo','clientes.nombre AS nombre_cliente',
+		                             'serie','folio','creado');
+	protected $search_fields = array('rfc','clientes.nombre','serie','folio','fecha');
+	protected $save_fields   = array('tipo','cliente_id','rfc','fecha','descuento','subtotal','iva','total','activo','creado',
+		                             'sello_cfd','certificado_sat','sello_sat');
 	// protected $edit_fields   = array('tipo','cliente_id','rfc','fecha','subtotal','iva','total','activo');
 	protected $new_defaults  = array('tipo' => 'R', 'activo' => 1);
 	protected $avoid_delete  = false;
@@ -98,11 +100,17 @@ class Factura extends BaseModel {
 			'rfc'        => $rfc,
 			'fecha'      => str_replace('T', ' ', $xmlData['fecha']),
 			'subtotal'   => $xmlData['subtotal'],
+			'descuento'  => $xmlData['descuento'],
 			'iva'        => $xmlData['impuestos_trasladados'],
 			'total'      => $xmlData['total'],
 			'activo'     => 1,
 			'serie'      => $xmlData['serie'],
-			'folio'      => $xmlData['folio']
+			'folio'      => $xmlData['folio'],
+			'creado'     => date('Y-m-d'),
+
+			'sello_cfd'       => $xmlData['sello_cfd'],
+			'certificado_sat' => $xmlData['certificado_sat'],
+			'sello_sat'       => $xmlData['sello_sat']
 		);
 
 		if (!$this->save($data, true)) {
@@ -132,26 +140,17 @@ class Factura extends BaseModel {
 			$data['folio']    = (string)$item['folio'];
 			$data['fecha']    = (string)$item['fecha'];
 			$data['subtotal'] = (float)$item['subTotal'];
+			$data['decuento'] = 0; // avoid error if do not exist
 			$data['total']    = (float)$item['total'];
+
+			$data['sello_cfd'] = '';
+			$data['certificado_sat'] = '';
+			$data['sello_sat'] = '';
 		}
 
 		foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Impuestos') as $item) {
 			$data['impuestos_trasladados'] = (float)$item['totalImpuestosTrasladados'];
 		}
-
-		// foreach ($xml->xpath('//cfdi:Comprobante') as $item) {
-		// 	var_dump((string)$item);
-		// 	// $xml2 = new SimpleXmlIterator($item->asXML());
-		// 	// $xml2->registerXPathNamespace("cfdi", "http://www.w3.org/2005/Atom");
-		// 	// var_dump($xml2);
-		// }
-
-		// foreach ($xml->children('cfdi',true) as $item) {
-		// 	if ($item->getName() == 'Complemento') {
-		// 		$item->registerXPathNamespace('tfd',true);
-		// 		var_dump($item->attributes);
-		// 	}
-		// }
 
 		return $data;
 	}
@@ -172,30 +171,37 @@ class Factura extends BaseModel {
 
 		// read more data from XML
 		foreach ($xml->xpath('//cfdi:Comprobante') as $item) {
-			$data['serie']    = (string)$item['Serie'];
-			$data['folio']    = (string)$item['Folio'];
-			$data['fecha']    = (string)$item['Fecha'];
-			$data['subtotal'] = (float)$item['SubTotal'];
-			$data['total']    = (float)$item['Total'];
+			$data['serie']     = (string)$item['Serie'];
+			$data['folio']     = (string)$item['Folio'];
+			$data['fecha']     = (string)$item['Fecha'];
+			$data['subtotal']  = (float)$item['SubTotal'];
+			$data['descuento'] = (isset($item['Descuento'])) ? (float)$item['Descuento'] : 0;
+			$data['total']     = (float)$item['Total'];
 		}
 
 		foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Impuestos') as $item) {
-			$data['impuestos_trasladados'] = (float)$item['TotalImpuestosTrasladados'];
+			if (isset($item['TotalImpuestosTrasladados'])) {
+				$data['impuestos_trasladados'] = (float)$item['TotalImpuestosTrasladados'];
+			} else {
+				$data['impuestos_trasladados'] = 0;
+			}
 		}
 
-		// foreach ($xml->xpath('//cfdi:Comprobante') as $item) {
-		// 	var_dump((string)$item);
-		// 	// $xml2 = new SimpleXmlIterator($item->asXML());
-		// 	// $xml2->registerXPathNamespace("cfdi", "http://www.w3.org/2005/Atom");
-		// 	// var_dump($xml2);
-		// }
+		if (! isset($data['impuestos_trasladados'])) {
+			$data['impuestos_trasladados'] = 0;
+		}
 
-		// foreach ($xml->children('cfdi',true) as $item) {
-		// 	if ($item->getName() == 'Complemento') {
-		// 		$item->registerXPathNamespace('tfd',true);
-		// 		var_dump($item->attributes);
-		// 	}
-		// }
+
+		$cfdi = $xml->xpath('//cfdi:Comprobante//cfdi:Complemento');
+		foreach ($cfdi as $c) {
+			$c->registerXPathNamespace('tfd', 'http://www.sat.gob.mx/TimbreFiscalDigital');
+			$tfd = $c->xpath('//tfd:TimbreFiscalDigital');
+			foreach ($tfd as $t) {
+				$data['sello_cfd'] = (string)$t['SelloCFD'];
+				$data['certificado_sat'] = (string)$t['NoCertificadoSAT'];
+				$data['sello_sat'] = (string)$t['SelloSAT'];
+			}
+		}
 
 		return $data;
 	}
