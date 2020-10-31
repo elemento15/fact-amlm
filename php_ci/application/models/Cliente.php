@@ -1,6 +1,6 @@
 <?php
 
-require_once('base_model.php');
+require_once('BaseModel.php');
 
 class Cliente extends BaseModel {
 	

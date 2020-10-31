@@ -1,8 +1,8 @@
 <?php
 
-require_once('base_model.php');
-require_once('configuracion.php');
-require_once('cliente.php');
+require_once('BaseModel.php');
+require_once('Configuracion.php');
+require_once('Cliente.php');
 
 class Factura extends BaseModel {
 	

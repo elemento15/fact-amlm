@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-include('base_controller.php');
+include('BaseController.php');
 
 class Clientes extends BaseController {
 
