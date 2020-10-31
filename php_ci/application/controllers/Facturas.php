@@ -46,10 +46,10 @@ class Facturas extends BaseController {
 			'fecha_final'   => substr($_REQUEST['fec_fin'], 0, 10)
 		);
 		
-		$this->rpt_facturas->setParams($params);
-		$this->rpt_facturas->AddPage();
-		$this->rpt_facturas->printRpt();
-		$this->rpt_facturas->Output('rpt_facturas.pdf', 'I');
+		$this->RptFacturas->setParams($params);
+		$this->RptFacturas->AddPage();
+		$this->RptFacturas->printRpt();
+		$this->RptFacturas->Output('rpt_facturas.pdf', 'I');
 	}
 	
 }
