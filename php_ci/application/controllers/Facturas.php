@@ -37,7 +37,7 @@ class Facturas extends BaseController {
 	}
 
 	public function print_report() {
-		$this->load->library('Rpt_Facturas');
+		$this->load->library('RptFacturas');
 
 		$params = array(
 			'type_rpt'      => substr($_REQUEST['rpt'], 0, 1),
