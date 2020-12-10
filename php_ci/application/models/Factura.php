@@ -140,7 +140,7 @@ class Factura extends BaseModel {
 			$data['folio']    = (string)$item['folio'];
 			$data['fecha']    = (string)$item['fecha'];
 			$data['subtotal'] = (float)$item['subTotal'];
-			$data['decuento'] = 0; // avoid error if do not exist
+			$data['descuento'] = 0; // avoid error if do not exist
 			$data['total']    = (float)$item['total'];
 
 			$data['sello_cfd'] = '';
