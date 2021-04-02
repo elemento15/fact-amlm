@@ -2,16 +2,19 @@ $(document).ready(function () {
 
   function initModule(modulo) {
     switch (modulo) {
+      case 'inicioModulo'        : var obj = new inicioModulo();
+                                   obj.init();
+                                   break;
       case 'configuracionModulo' : var obj = new configuracionModulo();
                                    obj.init();
                                    break;
-      case 'reportesModulo' : var obj = new reportesModulo();
-                                  obj.init();
-                                  break;
-      case 'clientesModulo' : clientesModulo.init();
-                              break;
-      case 'facturasModulo' : facturasModulo.init();
-                              break;
+      case 'reportesModulo'      : var obj = new reportesModulo();
+                                   obj.init();
+                                   break;
+      case 'clientesModulo'      : clientesModulo.init();
+                                   break;
+      case 'facturasModulo'      : facturasModulo.init();
+                                    break;
     }
   }
 
@@ -91,5 +94,8 @@ $(document).ready(function () {
     });
     return o;
   }
+
+  // show INICIO when logged in
+  $('#navbar li.opt-navbar').first().trigger('click');
 
 });

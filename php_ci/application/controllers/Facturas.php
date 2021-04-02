@@ -51,6 +51,12 @@ class Facturas extends BaseController {
 		$this->rpt_facturas->printRpt();
 		$this->rpt_facturas->Output('rpt_facturas.pdf', 'I');
 	}
+
+	public function chart12() {
+		$this->load->library('charts');
+		$this->charts->rpt12Months();
+		echo json_encode($this->charts->rpt12Months());
+	}
 	
 }
 

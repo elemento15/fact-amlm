@@ -33,6 +33,7 @@
     <script src="lib/locales.js"></script>
     <script src="lib/bootstrap-datetimepicker.min.js"></script>
     <script src="lib/underscore1.8.2.min.js"></script>
+    <script src="lib/canvasjs.min.js"></script>
 
     <script src="js/functions.js"></script>
     <script src="js/moduleGeneral.js"></script>
@@ -53,6 +54,7 @@
         </div>
         <div style="" aria-expanded="true" id="navbar" class="navbar-collapse collapse in">
           <ul class="nav navbar-nav navbar-right">
+            <li class="opt-navbar" tpl="inicio/main" modulo="inicioModulo"><a href="#">Inicio</a></li>
             <li class="opt-navbar" tpl="clientes/main" modulo="clientesModulo"><a href="#">Clientes</a></li>
             <li class="opt-navbar" tpl="facturas/main" modulo="facturasModulo"><a href="#">Facturas</a></li>
             <li class="opt-navbar" tpl="facturas/reportes" modulo="reportesModulo"><a href="#">Reportes</a></li>
