@@ -33,7 +33,7 @@ class Charts {
 	private function mapData12Months($data) {
 		$parsed = [];
 		$months = [];
-		$date = date_create(date('Y-m-d'));
+		$date = date_create(date('Y-m-').'01');
 
 		// create last 12 months list
 		$months[] = date_format($date, 'Y-m');
