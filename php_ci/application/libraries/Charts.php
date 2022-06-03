@@ -10,6 +10,7 @@ class Charts {
 		return [
 			'emitidas' => $this->getData12Months('E'), 
 			'recibidas' => $this->getData12Months('R'),
+			'pagos'  => $this->getData12MonthsPayments(),
 		];
 	}
 
@@ -23,6 +24,20 @@ class Charts {
 		$CI->db->where('fecha <= NOW()');
 		$CI->db->where('activo', 1);
 		$CI->db->where('tipo', $type);
+		$CI->db->order_by('anio_mes', 'ASC');
+		$CI->db->group_by('anio_mes');
+
+		$query = $CI->db->get();
+		return $this->mapData12Months($query->result());
+	}
+
+	private function getData12MonthsPayments() {
+		$CI =& get_instance();
+
+		$CI->db->select("CONCAT(anio,'-',IF(mes < 10, CONCAT('0',mes),mes)) AS anio_mes, SUM(total) AS total");
+		$CI->db->from('pagos');
+		$CI->db->having("anio_mes >= DATE_FORMAT(SUBDATE(DATE_FORMAT(NOW(), '%Y-%m-01'), INTERVAL 11 MONTH), '%Y-%m')");
+		$CI->db->having("anio_mes <= DATE_FORMAT(NOW(), '%Y-%m')");
 		$CI->db->order_by('anio_mes', 'ASC');
 		$CI->db->group_by('anio_mes');
 

@@ -44,3 +44,12 @@ CREATE TABLE `configuracion` (
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
+
+CREATE TABLE `pagos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `anio` INT NOT NULL,
+  `mes` INT NOT NULL,
+  `total` DECIMAL(18,6) NOT NULL DEFAULT 0,
+  `concepto` VARCHAR(200) NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;

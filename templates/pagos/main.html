@@ -1,0 +1,92 @@
+<!-- Grid -->
+<div class="grid-seccion">
+  <h3 class="titulo">Pagos al SAT</h3>
+
+  <div class="form-inline pull-right">
+    <div class="input-group stylish-input-group">
+      <input type="text" class="form-control textoBuscar" placeholder="Buscar" >
+      <span class="input-group-addon">
+        <span title="Limpiar Busqueda" class="glyphicon glyphicon-search clear-search"></span>
+      </span>
+    </div>
+  </div>
+  
+  <table id="gridPagos" class="table table-striped table-hover table-condensed">
+    <thead>
+      <th>
+        <div class="cls-orderable" nameColumn="anio">
+          <span>Año</span>
+        </div>
+      </th>
+      <th>
+        <div class="" nameColumn="mes">
+          <span>Mes</span>
+        </div>
+      </th>
+      <th style="text-align:center">
+        <div class="" nameColumn="total">
+          <span>Total </span>
+        </div>
+      </th>
+      <th>
+        <div class="" nameColumn="concepto">
+          <span>Concepto</span>
+        </div>
+      </th>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  
+  <div class="cls-toolbar">
+    <button class="btn btn-primary botonNuevo">Nuevo</button>
+    <button class="btn btn-primary botonEditar">Editar</button>
+    <button class="btn btn-danger  botonEliminar">Eliminar</button>
+  </div>
+</div>
+
+<!-- Formulario -->
+<div class="form-seccion">
+  <h3 class="titulo">Captura de Pago</h3>
+  <form id="formPagos">
+    <div class="cls-form row">
+      <div class="col-sm-4">
+        <input type="hidden" name="id" />
+        <div class="form-group">
+          <label for="txt-anio">Año:</label>
+          <input type="text" class="form-control" name="anio" maxlength="4" />
+        </div>
+        <div class="form-group">
+          <label for="txt-mes">Mes:</label>
+          <select class="form-control" name="mes">
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="txt-total">Total:</label>
+          <input type="text" class="form-control" name="total" />
+        </div>
+        <div class="form-group">
+          <label for="txt-concepto">Concepto:</label>
+          <input type="text" class="form-control" name="concepto" />
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <div class="cls-toolbar">
+    <button class="btn btn-primary botonGuardar">Guardar</button>
+    <button class="btn btn-default botonCerrar">Cerrar</button>
+  </div>
+</div>

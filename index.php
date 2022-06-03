@@ -57,6 +57,7 @@
             <li class="opt-navbar" tpl="inicio/main" modulo="inicioModulo"><a href="#">Inicio</a></li>
             <li class="opt-navbar" tpl="clientes/main" modulo="clientesModulo"><a href="#">Clientes</a></li>
             <li class="opt-navbar" tpl="facturas/main" modulo="facturasModulo"><a href="#">Facturas</a></li>
+            <li class="opt-navbar" tpl="pagos/main" modulo="pagosModulo"><a href="#">Pagos SAT</a></li>
             <li class="opt-navbar" tpl="facturas/reportes" modulo="reportesModulo"><a href="#">Reportes</a></li>
             <li class="opt-navbar" tpl="configuracion/main" modulo="configuracionModulo"><a href="#">Configuración</a></li>
             <li class="opt-navbar" opt="close-session"><a href="#">Cerrar</a></li>

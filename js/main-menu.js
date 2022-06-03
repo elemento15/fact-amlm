@@ -14,7 +14,9 @@ $(document).ready(function () {
       case 'clientesModulo'      : clientesModulo.init();
                                    break;
       case 'facturasModulo'      : facturasModulo.init();
-                                    break;
+                                   break;
+      case 'pagosModulo'         : pagosModulo.init();
+                                   break;
     }
   }
 

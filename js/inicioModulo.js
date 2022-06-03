@@ -34,6 +34,12 @@ var inicioModulo = function () {
 				name: 'Recibidas',
 				color: '#c85b5b', // red
 				dataPoints: []
+			},{
+				type: 'column',
+				showInLegend: true,
+				name: 'Pagos',
+				color: '#de8383', // pink
+				dataPoints: []
 			}]
 		});
 
@@ -69,6 +75,13 @@ var inicioModulo = function () {
 
 		data.recibidas.forEach(function (item) {
 			that.chart.data[1].dataPoints.push({
+				label: item.label,
+				y: parseFloat(item.total)
+			});
+		});
+
+		data.pagos.forEach(function (item) {
+			that.chart.data[2].dataPoints.push({
 				label: item.label,
 				y: parseFloat(item.total)
 			});
