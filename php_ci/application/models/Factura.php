@@ -23,6 +23,7 @@ class Factura extends BaseModel {
 
 	public function loadXML($xml) {
 		// read rfc from configuration
+		$xmlData = false;
 		$mod_conf = new Configuracion();
 		$mod_cli  = new Cliente();
 		$config = $mod_conf->getConfiguracion();
@@ -46,8 +47,13 @@ class Factura extends BaseModel {
 			$xmlData = $this->getDataXML32($xml);
 		}
 
-		if ($version == '3.3') {
+		if ($version == '3.3' || $version == '4.0') {
 			$xmlData = $this->getDataXML33($xml);
+		}
+
+		if (!$xmlData) {
+			$this->setError('Versión de factura incorrecta');
+			return false;
 		}
 
 		// check configuration RFC is equals to Emisor/Receptor
