@@ -126,12 +126,17 @@ class BaseModel extends CI_Model {
   public function setSearch($search) {
     $text = '';
     if ($search && isset($this->search_fields)) {
-      foreach ($this->search_fields as $item) {
-        $text.= ($text) ? ' OR ' : '';
-        $text.= (strpos($item, '.')) ? $item : $this->table_name.'.'.$item;
-        $text.= " LIKE '%$search%'";
+      $this->db->group_start();
+      foreach ($this->search_fields as $key => $item) {
+        if ($key == 0) {
+          $field = (strpos($item, '.')) ? $item : $this->table_name.'.'.$item;
+          $this->db->like($field, $search, 'both');
+        } else {
+          $field = (strpos($item, '.')) ? $item : $this->table_name.'.'.$item;
+          $this->db->or_like($field, $search, 'both');
+        }
       }
-      $this->db->where($text);
+      $this->db->group_end();
     }
   }
 
